@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NER Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Named Entity Recognition (NER) Application</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload a Text File:</label>
+                <input type="file" class="form-control-file" id="file" name="file" accept=".txt" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+        
+        {% if entities %}
+        <h2 class="mt-5">Entities found in the text:</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Label</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ent in entities %}
+                <tr>
+                    <td>{{ ent['Text'] }}</td>
+                    <td>{{ ent['Start'] }}</td>
+                    <td>{{ ent['End'] }}</td>
+                    <td>{{ ent['Label'] }}</td>
+                    <td>{{ ent['Description'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
