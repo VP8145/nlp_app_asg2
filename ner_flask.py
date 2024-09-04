@@ -12,7 +12,7 @@ def get_ents_df(doc):
     ents_data = []
     for ent in doc.ents:
         ents_data.append({
-            "Text": ent.text,
+            "text": ent.text,
             "Start": ent.start_char,
             "End": ent.end_char,
             "Label": ent.label_,
